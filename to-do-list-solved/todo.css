@@ -1,0 +1,31 @@
+.selector-area {
+    margin-top: 5px;
+    padding: 10px;
+    background-color: lightgrey;
+    width: 498px;
+    border: solid 1px darkgray;
+}
+
+#todo-list {
+    margin-top: 10px;
+}
+
+.spaced {
+    padding: 5px;
+}
+
+.list-item {
+    margin-top: 2px;
+    padding: 10px;
+    background-color: #FAF;
+    width: 500px;
+    border-radius: 8px;
+}
+
+.list-item.late {
+    background-color: red;
+}
+
+.list-item.done {
+    background-color: lightgreen;
+}

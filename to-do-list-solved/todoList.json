@@ -1,0 +1,29 @@
+[
+  {
+    "description": "Study for the CS exam",
+    "priority": 1,
+    "dueDate": "10 March 2015 10:00"
+  }, {
+    "description": "Go to the marketing workshop",
+    "priority": 2,
+    "dueDate": "10 March 2015 11:30"
+  }, {
+    "description": "Fix the sink pipe leakage",
+    "priority": 3,
+    "dueDate": "11 March 2015 17:00"
+  }, {
+    "description": "Do the weekly shopping",
+    "priority": 4,
+    "dueDate": "10 March 2015 21:00"
+  }, {
+    "description": "Help Mary with her assignment",
+    "priority": 10,
+    "dueDate": "11 March 2015 09:00"
+  }, {
+    "description": "Pay the electricity bill",
+    "dueDate": "15 March 2015 17:00"
+  }, {
+    "description": "Finish the PL assignment",
+    "done": true
+  }
+]
