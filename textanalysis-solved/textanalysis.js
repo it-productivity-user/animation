@@ -41,10 +41,13 @@ function expressionAnalysis(text, expression) {
     containsExpr = "Expression <b>not</b> found.";
   }
   var lineCount = "Number of lines containing the expression: " + matchingLines.length;
+  var wordMatches = "";
+  var words = [];
   var wordsPerLine = matchingLines.map(function(line) {
     var index = line.search(expression);
     var count = 0;
     while (index >= 0 && index < line.length) {
+      words.push(line.substring(index).match(expression)[0]);
       index += 1; // do not search again from the previous match
       line = line.substring(index);
       count += 1;
@@ -56,7 +59,11 @@ function expressionAnalysis(text, expression) {
     wordsPerLine.reduce(function(a, b) {
       return a + b;
     });
-  return containsExpr + br + lineCount + br + wordCount;
+  console.log("Words: "+ words);
+  var wordMatches = "Words matching the expression:<div><ul>" +
+    words.map(function(w) { return "<li>" + w + "</li>" }).join('') + "</ul></div>";
+
+  return containsExpr + br + wordMatches + br + lineCount + br + wordCount;
 }
 
 function noExpressionAnalysis(text) {

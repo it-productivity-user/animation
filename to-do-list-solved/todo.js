@@ -1,3 +1,4 @@
+var now = Date.parse("01 May 2015 09:00");
 var todoListName = 'todo-list';
 var file;
 var reader = new FileReader();
@@ -38,7 +39,7 @@ function dueDateOf(todoItem) {
 }
 
 function isOverdue(todoItem) {
-    return Date.parse(dueDateOf(todoItem)) < new Date();
+    return Date.parse(dueDateOf(todoItem)) < now;
 }
 
 function millisToHours(millis) {
@@ -53,7 +54,6 @@ function calculatePriority(todoItem) {
     var prio = priorityOf(todoItem);
     var dueDateString = dueDateOf(todoItem);
     var dueDate = Date.parse(dueDateString);
-    var now = new Date().getTime();
     var lateness = Math.max(0, millisToHours(now - dueDate));
     if (lateness > 0) {
         return 10 * prio + lateness;

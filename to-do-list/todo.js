@@ -1,3 +1,4 @@
+var now = Date.parse("01 May 2015 09:00");
 var todoListName = 'todo-list';
 var file;
 var reader = new FileReader();
