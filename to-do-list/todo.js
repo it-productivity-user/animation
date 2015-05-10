@@ -1,29 +1,18 @@
 var todoListName = 'todo-list';
-var sortingStrategyButtonName = 'sorting-strategy';
-var fileText = '';
+var file;
+var reader = new FileReader();
+reader.onload = function () {
+    var fileText = reader.result;
+    updateTodoListWith(fileText);
+};
 
 function sortAuto(item1, item2) {
-    // TODO implement auto sort function for TODO items
-    return true;
-}
-
-function sortByField(item1, item2) {
-    var fieldName = document.getElementById('sortByField').value
-    // TODO implement sort by fieldName
-    return true;
-}
-
-var sortStrategies = {
-    'FIRST': sortAuto, 'FIELD': sortByField
-}
-
-function selectSortFunction(strategyButtons) {
-    for (var i = 0; i < strategyButtons.length; i++) {
-        var button = strategyButtons[i];
-        if (button.checked) {
-            return sortStrategies[button.value];
-        }
-    }
+    // TODO implement sort function for TODO items
+    // for sorting in descending order, return integer n:
+    //   * n = 0 if items are equal
+    //   * n > 0 if item1 < item2
+    //   * n < 0 if item1 > item2
+    return 0;
 }
 
 function todoItemAsHtml(todoItem) {
@@ -37,17 +26,19 @@ function todoItemAsHtml(todoItem) {
 }
 
 function updateTodoList() {
-    var todoListDiv = document.getElementById(todoListName);
-    var strategyButtons = document.getElementsByName(sortingStrategyButtonName);
-    var sortFunction = selectSortFunction(strategyButtons);
-    if (fileText.length === 0) {
-        alert("Select a valid JSON file");
-        return;
+    if (typeof(file) != "undefined") {
+        reader.readAsText(file);
+    } else {
+        alert("Please select a JSON file");
     }
+}
+
+function updateTodoListWith(fileText) {
+    var todoListDiv = document.getElementById(todoListName);
+    todoListDiv.innerHTML = "";
     try {
         var jsonList = JSON.parse(fileText);
-        todoListDiv.innerHTML = "";
-        jsonList.sort(sortFunction).forEach(function (todoItem) {
+        jsonList.sort(sortAuto).forEach(function (todoItem) {
             todoListDiv.innerHTML += todoItemAsHtml(todoItem);
         });
     } catch (e) {
@@ -56,11 +47,7 @@ function updateTodoList() {
 }
 
 function onFileChange(event) {
-    var file = event.target.files[0];
-    var reader = new FileReader();
-    reader.onload = function () {
-        fileText = reader.result;
-        updateTodoList();
-    };
-    reader.readAsText(file);
+    file = event.target.files[0];
+    updateTodoList();
 }
+

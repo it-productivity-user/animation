@@ -9,14 +9,8 @@
 <div class="selector-area"
      title="The input file should be a JSON file containing an array of TODO items">
     <span>Select input file</span>
-    <input type="file" id="inputFile" onchange="onFileChange(event)"/>
-</div>
-<div class="selector-area">
-    <div class="spaced">Select a sort strategy:</div>
-    <input type="radio" name="sorting-strategy" value="FIRST" checked>To be done first
-    <input type="radio" name="sorting-strategy" value="FIELD">By field
-    <input type="text" id="sortByField">
-    <input type="button" class="spaced" onclick="updateTodoList();" value="Sort tasks">
+    <input type="file" id="inputFile" onchange="onFileChange(event);"/>
+    <button onclick="updateTodoList();">Reload</button>
 </div>
 <div id="todo-list">
     <!-- Example ToDoList Items -->
